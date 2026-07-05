@@ -1,0 +1,1 @@
+FROM hf.co/unsloth/gpt-oss-20b-GGUF:Q4_K_M

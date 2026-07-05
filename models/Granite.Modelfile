@@ -1,0 +1,1 @@
+FROM hf.co/ibm-granite/granite-3.3-8b-instruct-GGUF:Q4_K_M

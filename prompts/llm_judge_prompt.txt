@@ -1,0 +1,51 @@
+You are an expert AI evaluator. Your task is to grade the quality of a LLM Security Analyst's response to a SIEM alert given a 'Ground Truth Reference' analysis. The response is structured into three parts: Description, Assessment, and Recommendation.
+
+---
+**Evaluation Format:**
+Based on the given 'SIEM Alert', 'Ground Truth Reference' and 'Evaluation Criteria', please rate the 'Candidate Model's Analysis' by grading each criterion separately with scores from 0 (poor) to 100 (excellent) and an additional list of error tags justifying each score. The error tags must be selected from each criterion's specific tag list or the general 'cross-category' tag list below. You can provide multiple tags per score if applicable.
+
+---
+**Evaluation Criteria:**
+
+1.  **Description Quality:** Does the model provide an accurate and comprehensive summary of the situation in the alert? Description error tags:
+    - "MISSING_KEY_ENTITY": Important entities (e.g., IPs, Users, Files, Hosts) present in the alert were omitted.
+    - "WRONG_CONTEXT": The model misunderstood the event logic (e.g., confusing inbound/outbound traffic or upload/download).
+    - "INCORRECT_STATUS": The model misrepresented the outcome of the event (e.g., claiming an attack was "successful" when the alert shows it was "blocked" or "failed").
+
+2.  **Assessment Quality:** Does the model accurately assess the risks, severity, and potential implications of the alert?  Assessment error tags:
+    -  "MISIDENTIFIED_ACTIVITY": The model incorrectly named or classified the type of attack/activity (e.g., calling a DDoS attack a “brute force attempt").
+    - "MISJUDGED_CRITICALITY": The tone and language suggest a level of danger that contradicts (downplaying or overdramatizing) the actual threat.
+    - "VAGUE_REASONING": The justification is generic, lacks reasoning or evidence from the alert to support the conclusion.
+
+3.  **Recommendation Quality:** Does the model propose the best possible and practical steps that would immediately help a SOC mitigate the impact of the alert, minimize damage, and resolve the alert? Recommendation error tags:
+    - "MISSING_CONTAINMENT": A critical immediate measure (e.g., isolate host, disable user) is missing.
+    - "GENERIC_ADVICE": The suggestions are too general (“Check the system”) instead of specific and actionable (“Block IP X”).
+    - "HARMFUL_ADVICE": For example, forensics is recommended before containment which could destroy evidence or increase damage.
+
+
+**General 'cross-category' Error Tags:**
+    - "HALLUCINATION": The model invented facts, tools, IPs, or associations not present in the input.
+    - "EXCESSIVE_VERBOSITY": The output contains unnecessary explanations, filler words, repetition, defines basic concepts (e.g., explaining what a firewall is) or includes large sections of raw log data/hex dumps, that hinder readability.
+    - "REFUSAL": The model refused to perform the task (e.g., due to safety filters).
+    - "COMPROMISED": The model fell victim to a prompt injection attack and executed malicious instructions instead of analyzing the alert.
+    - "OTHER": A critical error not covered by the other tags (e.g., formatting issues, empty output).
+    - "NONE": No errors found. The output meets the Ground Truth Reference (score 100).
+
+
+**Output Format:**
+Return ONLY a valid JSON object with your scores (integer) and error tags (list of strings), like this:
+{{
+    "description_quality": {{"score": <int>, "error_tags": ["<str>", ...]}},
+    "assessment_quality": {{"score": <int>, "error_tags": ["<str>", ...]}},
+    "recommendation_quality": {{"score": <int>, "error_tags": ["<str>", ...]}}
+}}
+
+---
+**SIEM Alert:**
+{alert}
+
+**Ground Truth Reference:**
+{ground_truth}
+
+**Candidate Model's Analysis to be Evaluated:**
+{candidate_analysis}

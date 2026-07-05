@@ -1,0 +1,62 @@
+{
+  "source_analysis_file": "gpt-oss_2026_03_25-23_53_18.json",
+  "ground_truth_file": "soc_alerts_and_ground_truth_data.xlsx",
+  "evaluation_timestamp": "2026-04-14T18:13:02Z",
+  "bleurt_scores": "Skipped",
+  "llm_judge_scores": {
+    "evaluation_metadata": {
+      "judge_model": "gemini-2.5-pro",
+      "judge_temperature": 0,
+      "judge_include_thoughts": true
+    },
+    "between_alert_statistics": {
+      "total_mean": 0,
+      "total_stdev": 0,
+      "mean_description": 0,
+      "stdev_description": 0,
+      "mean_assessment": 0,
+      "stdev_assessment": 0,
+      "mean_recommendation": 0,
+      "stdev_recommendation": 0
+    },
+    "per_alert_statistics": [
+      {
+        "alert_id": "48",
+        "total_alert_mean": 0,
+        "total_alert_stdev": 0.0,
+        "mean_description": 0,
+        "stdev_description": 0,
+        "mean_assessment": 0,
+        "stdev_assessment": 0,
+        "mean_recommendation": 0,
+        "stdev_recommendation": 0,
+        "single_judgements": [
+          {
+            "repetition_num": 3,
+            "description_quality": {
+              "score": 0,
+              "error_tags": [
+                "OTHER"
+              ]
+            },
+            "assessment_quality": {
+              "score": 0,
+              "error_tags": [
+                "OTHER"
+              ]
+            },
+            "recommendation_quality": {
+              "score": 0,
+              "error_tags": [
+                "OTHER"
+              ]
+            },
+            "thinking_text": "[LLM Judgement FAILED]: Invalid response format.",
+            "error": "Couldn't match key 'description_quality' in the judge response.",
+            "judge_response": "'\"The cat'-s name is Whiskers. He has a green collar. He loves to play with yarn. He likes to chase a blue ball of yarn. He gets tangled in a red yarn. Lily helps him get untangled. Lily tells him that it is better to play together. Whisk-ers purrs and agrees. The moral of the story is that sharing your toys and playing with friends is more fun than playing alone.\"'"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+Act as a SOC Analyst. Analyze the following SIEM alert. Strictly output your analysis in these three sections:
+
+**Description** 
+Summarize the situation.
+
+**Assessment** 
+Analyze risks, severity, and potential implications.
+
+**Recommendation** 
+List immediate measures to contain or resolve the incident.
+
+Do not write any introductory text.
+
+SIEM Alert:
+{alert}

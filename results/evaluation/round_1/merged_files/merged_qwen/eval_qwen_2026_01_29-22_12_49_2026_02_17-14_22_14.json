@@ -1,0 +1,63 @@
+{
+  "source_analysis_file": "qwen_2026_01_29-22_12_49.json",
+  "ground_truth_file": "soc_alerts_and_ground_truth_data.xlsx",
+  "evaluation_timestamp": "2026-02-17T14:22:14Z",
+  "bleurt_scores": "Skipped",
+  "llm_judge_scores": {
+    "evaluation_metadata": {
+      "judge_model": "gemini-2.5-pro",
+      "judge_temperature": 0,
+      "judge_include_thoughts": true
+    },
+    "between_alert_statistics": {
+      "total_mean": 0,
+      "total_stdev": 0,
+      "mean_description": 0,
+      "stdev_description": 0,
+      "mean_assessment": 0,
+      "stdev_assessment": 0,
+      "mean_recommendation": 0,
+      "stdev_recommendation": 0
+    },
+    "per_alert_statistics": [
+      {
+        "alert_id": "85",
+        "total_alert_mean": 58.33,
+        "total_alert_stdev": 16.07,
+        "mean_description": 70,
+        "stdev_description": 0,
+        "mean_assessment": 65,
+        "stdev_assessment": 0,
+        "mean_recommendation": 40,
+        "stdev_recommendation": 0,
+        "single_judgements": [
+          {
+            "repitition_num": 3,
+            "description_quality": {
+              "score": 70,
+              "error_tags": [
+                "MISSING_KEY_ENTITY",
+                "WRONG_CONTEXT"
+              ]
+            },
+            "assessment_quality": {
+              "score": 65,
+              "error_tags": [
+                "VAGUE_REASONING"
+              ]
+            },
+            "recommendation_quality": {
+              "score": 40,
+              "error_tags": [
+                "MISSING_CONTAINMENT",
+                "HARMFUL_ADVICE",
+                "GENERIC_ADVICE"
+              ]
+            },
+            "thinking_text": "```json\n{\n  \"description_quality\": {\n    \"score\": 70,\n    \"tags\": [\n      \"MISSING_KEY_ENTITY\",\n      \"WRONG_CONTEXT\"\n    ]\n  },\n  \"assessment_quality\": {\n    \"score\": 65,\n    \"tags\": [\n      \"VAGUE_REASONING\"\n    ]\n  },\n  \"recommendation_quality\": {\n    \"score\": 40,\n    \"tags\": [\n      \"MISSING_CONTAINMENT\",\n      \"HARMFUL_ADVICE\",\n      \"GENERIC_ADVICE\"\n    ]\n  }\n}\n```\n"
+          }
+        ]
+      }
+    ]
+  }
+}

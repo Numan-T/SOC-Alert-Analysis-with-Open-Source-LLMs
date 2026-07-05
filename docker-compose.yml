@@ -1,0 +1,27 @@
+services:
+    ollama-service:
+        image: ollama/ollama:latest
+        container_name: ollama_backend
+        environment:
+            - OLLAMA_MAX_LOADED_MODELS=1
+        volumes:
+            - ollama_storage:/root/.ollama
+        ports:
+            - "11434:11434"
+        restart: always
+
+    python-app:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+        container_name: python_analyst
+        environment:
+            - OLLAMA_HOST=http://ollama-service:11434
+        volumes:
+            - ./results:/app/results
+            - .:/app
+        depends_on:
+            - ollama-service
+
+volumes:
+    ollama_storage:
